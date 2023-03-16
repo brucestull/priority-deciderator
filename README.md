@@ -8,15 +8,55 @@
 
 ### Models
 
+* `Task`
+    * `owner`
+        * `ForeignKey` to `CustomUser`
+        * The user who owns the task
+    * `description`
+        * The text of the task
+    * `completed`
+        * `BooleanField`
+        * Whether or not the task is completed
+    * `date`
+        * The date the task was created
+    * `updated_at`
+        * The date the task was last updated
+* `SubTask`
+    * `owner`
+        * `ForeignKey` to `CustomUser`
+        * The user who owns the sub task
+    * `description`
+        * The text of the sub task
+    * `task`
+        * The `ForeignKey` related `Task`
+    * `completed`
+        * `BooleanField`
+        * Whether or not the sub task is completed
+    * `date`
+        * The date the sub task was created
+    * `updated_at`
+        * The date the sub task was last updated
+* `ImportantConcept`
+    * `owner`
+        * `ForeignKey` to `CustomUser`
+        * The user who owns the important concept
+    * `description`
+        * The text of the important concept
+    * `task`
+        * The `ForeignKey` related `Task`
+    * `date`
+        * The date the important concept was created
+    * `updated_at`
+        * The date the important concept was last updated
+
 ### Views
 
 * `dashboard`
-  * The main view of the app:
-    * Shows a list of tasks
-    * Shows a form to add a new task
-    * Shows a button to clear all tasks
-    * Shows the related concepts for each task
-    * Shows a button to edit a task
+    * The main view of the app:
+        * Shows a list of tasks
+        * Shows a form to add a new task
+        * Shows a form to add a new important concept
+        * Shows a form to add a new sub task
 
 ### Pages
 
