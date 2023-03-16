@@ -70,7 +70,7 @@ class SubTask(models.Model):
     )
 
     def __str__(self):
-        return self.description[:50]
+        return self.description[:50] + " - " + self.task.description[:50]
 
     # def get_absolute_url(self):
     #     return reverse("subtasks:detail", args=(self.pk,))
@@ -107,7 +107,7 @@ class ImportantConcept(models.Model):
     )
 
     def __str__(self):
-        return self.description[:50]
+        return self.description[:50] + " - " + self.task.description[:50]
 
     # def get_absolute_url(self):
     #     return reverse("important_concepts:detail", args=(self.pk,))

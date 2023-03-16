@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Task, SubTask, ImportantConcept
+
+
+admin.site.register(Task)
+admin.site.register(SubTask)
+admin.site.register(ImportantConcept)

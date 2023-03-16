@@ -2,6 +2,10 @@
 
 ## A simple tool to help me decide what to do next
 
+## Application Links
+
+* <http://localhost:8000/deciderator/>
+
 ## Resources
 
 ## Models, Views, Pages, and Concepts
