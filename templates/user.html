@@ -8,9 +8,14 @@
     <a
         href="{% url 'dashboard' %}"
         >
-    Dashboard
+        Dashboard
     </a>
-
+    <br>
+    <a
+        href={% url 'deciderator:task-list' %}
+        >
+        Deciderator Tasks
+    </a>
     <br>
     {% if user.is_authenticated %}
         <span>Greetings, {{ user.username | capfirst }}!</span>

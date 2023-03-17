@@ -30,7 +30,15 @@ class Task(models.Model):
     )
 
     def __str__(self):
-        return self.owner.username + " : " + self.description[:50] + " - pk: " + str(self.pk) + " - special_order: " + str(self.special_order)
+        return (
+            self.owner.username
+            + " : "
+            + self.description[:50]
+            + " - pk: "
+            + str(self.pk)
+            + " - special_order: "
+            + str(self.special_order)
+        )
 
     # def get_absolute_url(self):
     #     return reverse("tasks:detail", args=(self.pk,))
@@ -39,29 +47,35 @@ class Task(models.Model):
         default=1,
     )
 
-    def get_next_special_order(self):
-        """
-        Get the next special order number.
+    # def get_next_special_order(self):
+    #     """
+    #     Get the next special order number.
 
-        Special order is used to order the tasks in the list view.
-        The next special order will be the highest special order number + 1.
+    #     Special order is used to order the tasks in the list view.
+    #     The next special order will be the the number of the users tasks + 1.
+    #     """
+    #     return Task.objects.filter(owner=self.owner).count() + 1
 
-        """
-        try:
-            return Task.objects.all().order_by("-special_order")[0].special_order + 1
-        except IndexError:
-            return 0
+    # def save(self, *args, **kwargs):
+    #     """
+    #     Save the task.
 
-    def sort_and_assign_special_order(self):
-        """
-        Sort the tasks by special order and assign the special order to each task.
+    #     If the task is new, assign the next special order.
+    #     """
+    #     if not self.pk:
+    #         self.special_order = self.get_next_special_order()
+    #     super(Task, self).save(*args, **kwargs)
 
-        This method is called when a task is saved.
-        """
-        tasks = Task.objects.all().order_by("-special_order")
-        for i, task in enumerate(tasks):
-            task.special_order = i + 1
-            task.save()
+    # def sort_and_assign_special_order(self):
+    #     """
+    #     Sort the tasks by special order and assign the special order to each task.
+
+    #     This method is called when a task is saved.
+    #     """
+    #     tasks = Task.objects.filter(owner=self.owner).order_by("-special_order")
+    #     for i, task in enumerate(tasks):
+    #         task.special_order = i + 1
+    #         task.save()
 
     class Meta:
         ordering = ["-created"]

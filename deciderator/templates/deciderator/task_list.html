@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{ the_site_name }}
+    -
+    {{ page_title }}
+{% endblock title %}
+
+{% block content %}
+
+<ol>
+{% for task in object_list %}
+    <li>{{ task }}</li>
+{% endfor %}
+</ol>
+
+{% endblock content %}
