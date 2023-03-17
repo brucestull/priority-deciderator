@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{ the_site_name }}
+    -
+    {{ page_title }}
+{% endblock title %}
+
+{% block content %}
+
+<h2>{{ user.username }}</h2>
+
+<ol>
+{% for task in user.tasks.all %}
+    <li>
+        {{ task }}
+        <ul>
+            {% for important_concept in task.important_concepts.all %}
+                <li>
+                    {{ important_concept }}
+                </li>
+            {% endfor %}
+        </ul>
+        <ol>
+            {% for subtask in task.subtasks.all %}
+                <li>
+                    {{ subtask }}
+                </li>
+            {% endfor %}
+        </ol>
+    </li>
+{% endfor %}
+</ol>
+
+{% endblock content %}

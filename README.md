@@ -5,6 +5,7 @@
 ## Application Links
 
 * <http://localhost:8000/deciderator/>
+* <http://localhost:8000/accounts/dashboard/>
 
 ## Resources
 
